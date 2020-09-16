@@ -1,0 +1,23 @@
+{
+  "name": "ithome_30day",
+  "version": "1.0.0",
+  "description": "IT邦邦忙鐵人賽用git檔案",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frenkieli/ithome_30day.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Frenkieli/ithome_30day/issues"
+  },
+  "homepage": "https://github.com/Frenkieli/ithome_30day#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
