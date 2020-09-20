@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>測試頁面</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>這是測試頁面</h1>
+    <p>Welcome to 這是測試頁面</p>
+    <button id="callApi">呼叫API</button>
+    <a href="./">前往首頁</a>
+    <script>
+      let callApiButton = document.getElementById('callApi');
+      callApiButton.addEventListener('click',async function(){
+        let result = await fetch('/test',{
+          method: 'post'
+        }).then(res=>{
+          return res.json();
+        })
+        alert(JSON.stringify(result));
+      })
+  </script>
+  </body>
+</html>

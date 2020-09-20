@@ -7,5 +7,16 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <button id="callApi">呼叫API</button>
+    <a href="./test">前往新頁面</a>
+    <script>
+        let callApiButton = document.getElementById('callApi');
+        callApiButton.addEventListener('click',async function(){
+          let result = await fetch('/users').then(res=>{
+            return res.text();
+          })
+          alert(result);
+        })
+    </script>
   </body>
 </html>
