@@ -7,18 +7,42 @@
   <body>
     <h1>這是測試頁面</h1>
     <p>Welcome to 這是測試頁面</p>
-    <button id="callApi">呼叫API</button>
+    <button id="callGetApi">GET API</button>
+    <button id="callGetApi2">GET API2</button>
+    <br>
+    <button id="callPostApi">POST API</button>
+    <br>
     <a href="./">前往首頁</a>
     <script>
-      let callApiButton = document.getElementById('callApi');
-      callApiButton.addEventListener('click',async function(){
-        let result = await fetch('/test',{
-          method: 'post'
-        }).then(res=>{
-          return res.json();
+        let callGetApiButton = document.getElementById('callGetApi');
+        callGetApiButton.addEventListener('click',async function(){
+          let result = await fetch('/test/get?id=helloworld').then(res=>{
+            return res.text();
+          })
+          alert(result);
         })
-        alert(JSON.stringify(result));
-      })
+        let callGetApi2Button = document.getElementById('callGetApi2');
+        callGetApi2Button.addEventListener('click',async function(){
+          let result = await fetch('/test/get/12345678?id=helloworld').then(res=>{
+            return res.text();
+          })
+          alert(result);
+        })
+        let callPostApiButton = document.getElementById('callPostApi');
+        callPostApiButton.addEventListener('click',async function(){
+          let result = await fetch('/test/post/12345678?id=helloworld',{
+            method: 'post',
+            body: JSON.stringify({
+              id: 987654321
+            }),
+            headers: {
+              'content-type': 'application/json'
+            },
+          }).then(res=>{
+            return res.text();
+          })
+          alert(result);
+        })
   </script>
   </body>
 </html>
