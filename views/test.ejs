@@ -1,48 +1,108 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>測試頁面</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>這是測試頁面</h1>
-    <p>Welcome to 這是測試頁面</p>
-    <button id="callGetApi">GET API</button>
-    <button id="callGetApi2">GET API2</button>
-    <br>
-    <button id="callPostApi">POST API</button>
-    <br>
-    <a href="./">前往首頁</a>
-    <script>
-        let callGetApiButton = document.getElementById('callGetApi');
-        callGetApiButton.addEventListener('click',async function(){
-          let result = await fetch('/test/get?id=helloworld').then(res=>{
-            return res.text();
-          })
-          alert(result);
-        })
-        let callGetApi2Button = document.getElementById('callGetApi2');
-        callGetApi2Button.addEventListener('click',async function(){
-          let result = await fetch('/test/get/12345678?id=helloworld').then(res=>{
-            return res.text();
-          })
-          alert(result);
-        })
-        let callPostApiButton = document.getElementById('callPostApi');
-        callPostApiButton.addEventListener('click',async function(){
-          let result = await fetch('/test/post/12345678?id=helloworld',{
-            method: 'post',
-            body: JSON.stringify({
-              id: 987654321
-            }),
-            headers: {
-              'content-type': 'application/json'
-            },
-          }).then(res=>{
-            return res.text();
-          })
-          alert(result);
-        })
+
+<head>
+  <title>測試頁面</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>這是測試頁面</h1>
+  <p>Welcome to 這是測試頁面</p>
+  <button id="callGetApi">GET API</button>
+  <button id="callGetApi2">GET API2</button>
+  <br>
+  <button id="callPostApi">POST API</button>
+  <br>
+  <button id="callPutApi">PUT API</button>
+  <br>
+  <button id="callPatchApi">PATCH API</button>
+  <br>
+  <button id="callDeleteApi">DELETE API</button>
+  <br>
+  <a href="./">前往首頁</a>
+  <script>
+    let callGetApiButton = document.getElementById('callGetApi');
+    callGetApiButton.addEventListener('click', async function () {
+      let result = await fetch('/test/get?id=helloworld').then(res => {
+        return res.text();
+      })
+      alert(result);
+    })
+    let callGetApi2Button = document.getElementById('callGetApi2');
+    callGetApi2Button.addEventListener('click', async function () {
+      let result = await fetch('/test/get/12345678?id=helloworld').then(res => {
+        return res.text();
+      })
+      alert(result);
+    })
+    let callPostApiButton = document.getElementById('callPostApi');
+    callPostApiButton.addEventListener('click', async function () {
+      let result = await fetch('/test/post/12345678?id=helloworld', {
+        method: 'post',
+        body: JSON.stringify({
+          id: 987654321
+        }),
+        headers: {
+          'content-type': 'application/json'
+        },
+      }).then(res => {
+        return res.text();
+      })
+      alert(result);
+    })
+    // ====================== put =====================
+    document.getElementById('callPutApi').addEventListener('click', async function () {
+      let result = await fetch('/test/put/12345678?id=helloworld', {
+        method: 'put',
+        body: JSON.stringify({
+          id: 987654321
+        }),
+        headers: {
+          'content-type': 'application/json'
+        },
+      }).then(res => {
+        return res.text();
+      })
+      alert(result);
+    })
+    // ====================== put =====================
+    
+    // ====================== patch =====================
+    document.getElementById('callPatchApi').addEventListener('click', async function () {
+      let result = await fetch('/test/patch/12345678?id=helloworld', {
+        method: 'PATCH',
+        body: JSON.stringify({
+          id: 987654321
+        }),
+        headers: {
+          'content-type': 'application/json',
+          'dododo': 'gogogo'
+        },
+      }).then(res => {
+        return res.text();
+      })
+      alert(result);
+    })
+    // ====================== patch =====================
+
+    // ====================== delete =====================
+    document.getElementById('callDeleteApi').addEventListener('click', async function () {
+      let result = await fetch('/test/delete/12345678?id=helloworld', {
+        method: 'delete',
+        body: JSON.stringify({
+          id: 987654321
+        }),
+        headers: {
+          'content-type': 'application/json'
+        },
+      }).then(res => {
+        return res.text();
+      })
+      alert(result);
+    })
+        // ====================== delete =====================
   </script>
-  </body>
+</body>
+
 </html>
