@@ -8,8 +8,10 @@ var sassMiddleware = require('node-sass-middleware');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var testRouter = require('./routes/test');
+var linebotRouter = require('./routes/linebot');
 
 var app = express();
+app.use('/linebot', linebotRouter);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
