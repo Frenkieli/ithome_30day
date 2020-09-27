@@ -49,21 +49,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+let DB = require('./models/mongoDB');
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-mongoose.connect('mongodb+srv://ItHelp_Donkey:ItHelp_Donkey@cluster0.acbw6.gcp.mongodb.net/sample_analytics?retryWrites=true&w=majority', { 
-  useNewUrlParser: true, 
-  useUnifiedTopology: true 
-});
-const accounts = new Schema({
-  account_id: { type: Number},
-  limit: { type: Number},
-  products: { type: Array},
-});
-const MyModel = mongoose.model('accounts', accounts, 'accounts');
-MyModel.find({}, function(err, docs){
-  console.log(docs);
+DB.read('accounts').then(res=>{
+  console.log(res);
 })
 
 module.exports = app;
