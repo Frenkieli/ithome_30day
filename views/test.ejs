@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>測試頁面</title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-
-<body>
+<%- include('./header.ejs', {title: title, navBar: navBar}); %>
+<!-- 將變數注入進去樣板 -->
   <h1>這是測試頁面</h1>
   <p>Welcome to 這是測試頁面</p>
   <button id="callGetApi">GET API</button>
@@ -67,7 +60,7 @@
       alert(result);
     })
     // ====================== put =====================
-    
+
     // ====================== patch =====================
     document.getElementById('callPatchApi').addEventListener('click', async function () {
       let result = await fetch('/test/patch/12345678?id=helloworld', {
