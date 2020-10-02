@@ -1,0 +1,35 @@
+{
+  "name": "ithome_30day",
+  "version": "1.0.0",
+  "description": "IT邦邦忙鐵人賽用git檔案",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frenkieli/ithome_30day.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Frenkieli/ithome_30day/issues"
+  },
+  "homepage": "https://github.com/Frenkieli/ithome_30day#readme",
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^2.5.2"
+  }
+}
