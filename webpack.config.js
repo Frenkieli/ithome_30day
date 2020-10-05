@@ -17,6 +17,15 @@ const serverConfig = {
     filename: '[name].bundle.js'
   },
   externals: [nodeExternals()],
+  module: {   //設定你的檔案選項
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ],
+  },
   plugins: [
     new CopyPlugin({
       patterns: [
@@ -25,5 +34,8 @@ const serverConfig = {
       ]
     })
   ],
+  resolve: {
+    extensions: ['.ts', '.js'],
+  },
 }
 module.exports = [serverConfig];
