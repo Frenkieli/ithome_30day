@@ -2,6 +2,8 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const CopyPlugin = require('copy-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
+
 const serverConfig = {
   target: 'node',
   entry: {
@@ -38,4 +40,55 @@ const serverConfig = {
     extensions: ['.ts', '.js'],
   },
 }
-module.exports = [serverConfig];
+
+const clientConfig = {
+  target: 'web',
+  devtool: 'eval-source-map',
+  entry: {
+    'index': path.join(__dirname, 'src/client/main.js')
+  },
+  output: {
+    path: path.join(__dirname, 'dist/public'),
+    filename: './javascripts/[name].bundle.js',
+  },
+  plugins: [
+    new VueLoaderPlugin()
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: [
+          {
+            loader: 'vue-loader',
+          }
+        ]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env']
+        }
+      },
+      {
+        test: /\.scss|\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '/images/' + '[name][hash].[ext]'
+        },
+      },
+    ],
+  }
+}
+module.exports = [serverConfig, clientConfig];
