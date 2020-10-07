@@ -1,18 +1,26 @@
 <template>
   <div class="container">
     hello {{state.message}}
+    <router-view
+      class="main_container"
+    />
+    hello {{ vuexName }}
   </div>
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { reactive, computed } from 'vue';
+import { useStore } from 'vuex';
 export default {
   setup () {
     const state = reactive({
       message: 'Vue3'
     })
+    const store = useStore();
+    const vuexName = computed(() => store.state.store);
     return {
       state,
+      vuexName
     }
   }
 }
