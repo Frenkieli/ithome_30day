@@ -5,6 +5,10 @@
       class="main_container"
     />
     hello {{ vuexName }}
+    <br>
+    <router-link :to="{name: 'home'}">home</router-link>
+    <br>
+    <router-link :to="{name: 'addNumber'}">addNumber</router-link>
   </div>
 </template>
 
