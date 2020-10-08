@@ -1,0 +1,15 @@
+$color : (
+  title : #f00,
+  subtitle : #00f,
+);
+$fontStyleName: (
+  title : 32px 700,
+  subtitle : 28px 400,
+);
+// 空一格代表陣列位置
+@mixin fontStyle($fontPick) {
+  font-size: nth(map-get($fontStyleName, $fontPick), 1);
+  font-weight: nth(map-get($fontStyleName, $fontPick), 2);
+  // 一個呼叫位置１，一個呼叫２
+  color: map-get($color, $fontPick);
+}

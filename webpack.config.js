@@ -78,7 +78,14 @@ const clientConfig = {
           'style-loader',
           'css-loader',
           'postcss-loader',
-          'sass-loader'
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              // Provide path to the file with resources
+              resources: path.join(__dirname, 'src/client/scss/global.scss'),
+            },
+          },
         ]
       },
       {

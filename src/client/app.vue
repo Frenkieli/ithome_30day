@@ -1,14 +1,18 @@
 <template>
   <div class="container">
-    hello {{state.message}}
+    <h1 class="container_title">
+      hello {{state.message}}
+    </h1>
     <router-view
       class="main_container"
     />
-    hello {{ vuexName }}
+    <h2 class="container_subtitle">
+      hello {{ vuexName }}
+    </h2>
     <br>
-    <router-link :to="{name: 'home'}">home</router-link>
+    <router-link class="routerLink" :to="{name: 'home'}">home</router-link>
     <br>
-    <router-link :to="{name: 'addNumber'}">addNumber</router-link>
+    <router-link class="routerLink" :to="{name: 'addNumber'}">addNumber</router-link>
   </div>
 </template>
 
@@ -36,9 +40,19 @@ export default {
   }
 </style>
 <style lang="scss" scoped>
-body {
-  .container {
-    font-size:  20px 400;
+.container {
+  &_title{
+    @include fontStyle('title');
+  }
+  &_subtitle{
+    @include fontStyle('subtitle');
+  }
+  .routerLink{
+    display: inline-block;
+    padding: 2px;
+    margin: 2px;
+    border: 1px solid #000;
+    text-decoration: none;
   }
 }
 </style>
