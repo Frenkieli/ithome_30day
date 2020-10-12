@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon dist/index.bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack -d -w"
+    "webpack": "webpack -d -w",
+    "heroku-postbuild": "webpack -d"
   },
   "repository": {
     "type": "git",
